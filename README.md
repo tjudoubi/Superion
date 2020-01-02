@@ -103,6 +103,10 @@ export CC=~/path_to_Superion/afl-gcc
 export CXX=~/path_to_Superion/afl-g++
 
 python ./tools/build.py --clean --debug --compile-flag=-fsanitize=address --compile-flag=-m32 --compile-flag=-fno-omit-frame-pointer --compile-flag=-fno-common --jerry-libc=off --static-link=off --lto=off --error-message=on --system-allocator=on
+####################################################
+###########python ./tools/build.py --clean --debug --compile-flag=-fsanitize=address  --compile-flag=-fno-omit-frame-pointer ###########--compile-flag=-fno-common  --error-message=on
+#################
+
 
 ./afl-fuzz -M f1 -x ~/path_to_Superion/dictionaries/js.dict -t 40+ -m 2000 -i ~/jerry_seeds/ -o ~/jerry_out/ ~/jerryscript/build/bin/jerry @@
 ./afl-fuzz -S f2 -t 40+ -m 2000 -i ~/jerry_seeds/ -o ~/jerry_out/ ~/jerryscript/build/bin/jerry @@

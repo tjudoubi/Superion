@@ -81,11 +81,26 @@ svn checkout https://svn.webkit.org/repository/webkit/trunk WebKit
 To fuzz it using AFL or Superion, we first need to instrument the executable. 
 
 ```
-export CC=~/path_to_Superion/afl-clang-fast
-export CXX=~/path_to_Superion/afl-clang-fast++
+##################################################
+#export CC=~/path_to_Superion/afl-clang-fast######
+#export CXX=~/path_to_Superion/afl-clang-fast++###
+#export AFL_HARDEN=1##############################
+#./Tools/Scripts/build-jsc --jsc-only --j14#######
+################################################
+```
+if these command can't build WebKit,use the commands below.
+(Beacause the WebKit needs the latest clang, but the afl's llvm_mode needs the clang whose version below 4.0.
+Forthemore,we use the latest gcc and g++ to build afl to aquire afl-gcc and afl-g++ which link to gcc and g++.
+Then, we use the latest afl-gcc and afl-g++ to build WebKit.
+```
+export CC=~/path_to_Superion/afl-gcc
+export CXX=~/path_to_Superion/afl-g++
 export AFL_HARDEN=1
 ./Tools/Scripts/build-jsc --jsc-only --j14
+
 ```
+
+
 
 In the experiments, we fuzzed it using four processes.
 

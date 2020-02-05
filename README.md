@@ -95,6 +95,8 @@ Then, we use the latest afl-gcc and afl-g++ to build WebKit.
 ```
 export CC=~/path_to_Superion/afl-gcc
 export CXX=~/path_to_Superion/afl-g++
+export CFLAGS="-ftest-coverage -fprofile-arcs"
+export CXXFLAGS="-ftest-coverage -fprofile-arcs"
 export AFL_HARDEN=1
 ./Tools/Scripts/build-jsc --jsc-only --j14
 

@@ -64,7 +64,8 @@ To compile afl-clang-fast and afl-clang-fast++, which are used to instrument fuz
 ```#####################################################
 cd /path_to_Superion/llvm_mode/
 ########################################################
-LLVM_CONFIG=llvm-config-3.8 CXXFLAGS="-DLLVM38" make####
+LLVM_CONFIG=llvm-config-3.8 CC=clang make##############
+(Ubuntu's default clang's version is 3.8)
 #######################################################
 
 LLVM_CONFIG=llvm-config-6.0 CC=clang-6.0  make
